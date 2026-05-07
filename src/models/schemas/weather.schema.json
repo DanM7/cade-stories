@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cade-stories/weather.schema.json",
+  "title": "Weather",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["forecast", "temperature"],
+  "properties": {
+    "forecast": { "type": "string", "minLength": 1 },
+    "temperature": { "type": "string", "minLength": 1 }
+  }
+}

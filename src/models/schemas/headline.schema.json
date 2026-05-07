@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cade-stories/headline.schema.json",
+  "title": "Headline",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "summary"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 }
+  }
+}

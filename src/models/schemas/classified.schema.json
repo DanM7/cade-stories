@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "cade-stories/classified.schema.json",
+  "title": "Classified",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "title", "description"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 }
+  }
+}
