@@ -1,6 +1,8 @@
 export interface Headline {
   title: string
   summary: string
+  /** Article id the masthead headline should navigate to (usually the lead story). */
+  linkedArticleId?: string
 }
 
 export interface Article {
@@ -27,7 +29,7 @@ export interface WeatherReport {
 }
 
 export interface ClassifiedItem {
-  id: string
+  category: 'Wanted' | 'For Sale' | 'Business Opportunity'
   title: string
   description: string
 }

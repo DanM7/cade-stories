@@ -8,7 +8,7 @@ export const articleUppercaseTooth: Article = {
     {
       text: 'The Alphabet Dental Desk convened an emergency session this morning after receiving reports of a new and previously unclassified type of discomfort: uppercase tooth pain. Specialists from the Orthographic Dentistry Guild arrived with clipboards, magnifying glasses, and a surprising number of alphabet charts, determined to map the full range of symptoms across both lowercase and uppercase dental regions.',
       pullQuote:
-        '"Mommaaaaaaa? My this tooth hurts, and my uppercase tooth hurts.," said local Cade Maguire.',
+        '"Mommaaaaaaa? My this tooth hurts, and my uppercase tooth hurts," remarked onlooker Cade Maguire.',
     },
     {
       text: 'Local resident Cade Maguire first reported the condition during a routine morning check‑in, alerting experts to the possibility that teeth may have grammatical categories previously overlooked by science. Witnesses say Cade delivered the announcement with urgency and perfect emotional clarity, prompting immediate debate among dentists about whether uppercase teeth require capital‑letter treatment plans or simply louder brushing.',

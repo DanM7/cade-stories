@@ -7,6 +7,7 @@
   "required": ["title", "summary"],
   "properties": {
     "title": { "type": "string", "minLength": 1 },
-    "summary": { "type": "string", "minLength": 1 }
+    "summary": { "type": "string", "minLength": 1 },
+    "linkedArticleId": { "type": "string", "minLength": 1 }
   }
 }

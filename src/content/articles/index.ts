@@ -8,10 +8,12 @@ import { articlePasswordAlert } from './article-password-alert'
 import { articlePbjMission } from './article-pbj-mission'
 import { articlePenguinFacts } from './article-penguin-facts'
 import { articleShoeSafety } from './article-shoe-safety'
+import { articleTruckParliament } from './article-truck-parliament'
 import { articleUppercaseTooth } from './article-uppercase-tooth'
 
 export const STATIC_ARTICLES: Article[] = [
   articleTenBasements,
+  articleTruckParliament,
   articleBoomyStairs,
   articleObstacleDerby,
   articleHoneymoonDesk,

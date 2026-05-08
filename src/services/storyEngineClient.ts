@@ -1,7 +1,7 @@
-import { CHARACTERS } from '../models/lore'
 import type { NewspaperPageData, NewspaperSection } from '../models/types'
 import { STATIC_ARTICLES } from '../content/articles'
-import { pickOne } from '../utils/random'
+import { STATIC_CLASSIFIEDS } from '../content/classifieds'
+import { getWeatherForMonth } from './weather'
 
 const API_BASE_URL = import.meta.env.VITE_STORY_ENGINE_URL as string | undefined
 
@@ -61,8 +61,10 @@ export class StoryEngineClient {
   }
 }
 
-function generateMockNewspaper(prompt?: string): NewspaperPageData {
-  const spark = prompt?.trim() || pickOne(CHARACTERS)
+function generateMockNewspaper(_prompt?: string): NewspaperPageData {
+  const month = new Date().getMonth() + 1
+  const weather = getWeatherForMonth(month)
+  const leadArticle = STATIC_ARTICLES[0]
   const primaryQuotes = [
     BASEMENT_AND_BUSINESS_QUOTE,
     TRUCK_QUOTE,
@@ -78,9 +80,9 @@ function generateMockNewspaper(prompt?: string): NewspaperPageData {
 
   return {
     headline: {
-      title: `${spark} Declares Emergency After Midnight Truck Parliament`,
-      summary:
-        'Witnesses say Boomy banged the horn at dawn while Grandpa Logger negotiated peace with three rogue ladders.',
+      title: leadArticle.title,
+      summary: leadArticle.lead,
+      linkedArticleId: leadArticle.id,
     },
     articles: STATIC_ARTICLES,
     quotes: primaryQuotes.slice(0, 3).map((quote) => ({
@@ -89,33 +91,17 @@ function generateMockNewspaper(prompt?: string): NewspaperPageData {
       quote,
     })),
     weather: {
-      forecast: 'Cloudy with a 90% chance of grappling hooks and whispered truck secrets.',
-      temperature: `${Math.floor(55 + Math.random() * 20)} F`,
+      forecast: weather.description,
+      temperature: `${weather.highTemp} F`,
     },
-    classifieds: [
-      {
-        id: 'classified-shoe-tamer',
-        title: 'Wanted: Shoe Tamer',
-        description: 'Help Grandpa Logger inspect suspicious shoes for hidden claws.',
-      },
-      {
-        id: 'classified-honeymoon',
-        title: 'For Sale: Slightly Used Honeymoon Invitation',
-        description: 'Mom invited. Dad status pending spouse approval.',
-      },
-      {
-        id: 'classified-business-opportunity',
-        title: 'Business Opportunity',
-        description: 'Apply now for one big private business, immediate start.',
-      },
-    ],
+    classifieds: STATIC_CLASSIFIEDS,
   }
 }
 
 const BASEMENT_AND_BUSINESS_QUOTE = 'If I have 10 fingers, Grandpa Logger has 10 basements.'
 
 const TRUCK_QUOTE =
-  'Boomy fell down the stairs just like he did this morning. But he did it when he was working as a cleaning person at school.'
+  'I fell down the stairs this morning. Boomy fell down the stairs this morning too.'
 
 const RACE_AND_OBSTACLE_QUOTE =
   'How fast is a timber rattlesnake? I bet they could not outrun an obstacle course.'

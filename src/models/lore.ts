@@ -1,6 +1,6 @@
 export const LORE_QUOTES = [
   "I'm going to invite you mom on my honeymoon. Maybe not dad. I'll talk to my wife about it.",
-  'Boomy fell down the stairs just like he did this morning. But he did it when he was working as a cleaning person at school.',
+  'I fell down the stairs this morning. Boomy fell down the stairs this morning too.',
   'Callie fell up the stairs one time.',
   'The baddest truck in all the land has lasers and horns, and took over the entire truck world.',
   "Know what GL's password is? 41 Muffin Lane.",

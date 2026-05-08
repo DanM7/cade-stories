@@ -1,6 +1,7 @@
 import type { NewspaperPageData } from '../models/types'
 import { getCurrentEditionLabel } from '../utils/edition'
 import { navigateTo } from '../utils/navigation'
+import { normalizeAttributedPullQuote } from '../utils/quotes'
 
 interface NewspaperPageProps {
   data: NewspaperPageData
@@ -8,10 +9,26 @@ interface NewspaperPageProps {
 
 export function NewspaperPage({ data }: NewspaperPageProps) {
   const editionLabel = getCurrentEditionLabel()
-  const featureStory = data.articles[0]
-  const topQuickLinks = data.articles.slice(1, 4)
-  const lowerQuickLinks = data.articles.slice(4, 7)
-  const remainingStories = data.articles.slice(7)
+  const fallbackFeatureStory = data.articles[0]
+  const headlineArticleId = data.headline.linkedArticleId ?? fallbackFeatureStory?.id
+  const featureStory =
+    data.articles.find((article) => article.id === 'article-truck-parliament') ??
+    data.articles.find((article) => article.id !== headlineArticleId)
+
+  const excludedIds = new Set<string>(
+    [headlineArticleId, featureStory?.id].filter((id): id is string => Boolean(id)),
+  )
+  const nonFeaturedLinks = data.articles.filter((article) => !excludedIds.has(article.id))
+  const topQuickLinks = nonFeaturedLinks.slice(0, 3)
+  const lowerQuickLinks = nonFeaturedLinks.slice(3, 6)
+  const remainingStories = nonFeaturedLinks.slice(6)
+  const classifiedOrder = ['Wanted', 'For Sale', 'Business Opportunity'] as const
+  const classifiedsByCategory = classifiedOrder
+    .map((category) => ({
+      category,
+      items: data.classifieds.filter((item) => item.category === category),
+    }))
+    .filter((group) => group.items.length > 0)
 
   return (
     <main className="newspaper">
@@ -24,12 +41,12 @@ export function NewspaperPage({ data }: NewspaperPageProps) {
       <section className="main-flow">
         <article className="panel">
           <PanelHeader title="Front Page Headline" />
-          {featureStory ? (
+          {headlineArticleId ? (
             <button
               type="button"
               className="story-link"
-              onClick={() => openArticle(featureStory.id)}
-              aria-label={`Open feature article for ${data.headline.title}`}
+              onClick={() => openArticle(headlineArticleId)}
+              aria-label={`Open article for headline: ${data.headline.title}`}
             >
               <h2 className="headline">{data.headline.title}</h2>
               <p>{data.headline.summary}</p>
@@ -63,10 +80,17 @@ export function NewspaperPage({ data }: NewspaperPageProps) {
 
         <article className="panel">
           <PanelHeader title="Classifieds" />
-          {data.classifieds.map((item) => (
-            <p key={item.id}>
-              <strong>{item.title}:</strong> {item.description}
-            </p>
+          {classifiedsByCategory.map((group) => (
+            <div key={group.category}>
+              <p>
+                <strong>{group.category}</strong>
+              </p>
+              {group.items.map((item) => (
+                <p key={`${item.category}-${item.title}`}>
+                  {item.title}: {item.description}
+                </p>
+              ))}
+            </div>
           ))}
         </article>
 
@@ -124,7 +148,9 @@ function StoryTeaser({ article }: { article: NewspaperPageData['articles'][numbe
     >
       <h3>{article.title}</h3>
       <p>{article.lead}</p>
-      {article.body[0]?.pullQuote && <blockquote>{article.body[0].pullQuote}</blockquote>}
+      {article.body[0]?.pullQuote && (
+        <blockquote>{normalizeAttributedPullQuote(article.body[0].pullQuote)}</blockquote>
+      )}
       <span className="story-link-hint">Read expanded article</span>
     </button>
   )

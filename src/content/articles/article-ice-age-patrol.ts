@@ -8,7 +8,7 @@ export const articleIceAgePatrol: Article = {
     {
       text: 'Newly uncovered documents from the Imagination Bureau reveal that Grandpa Logger, long known for his unconventional lifestyle and shoe‑related anxieties, once served on a youth expedition during the Ice Age. According to the records, his primary responsibility was saber‑tooth tiger reconnaissance, a role historians now describe as “both extremely dangerous and extremely confusing, given the timeline.”',
       pullQuote:
-        '"When Grandpa Logger was a teenager he worked for Ice Age looking for saber tooth tigers.," said local Cade Maguire.',
+        '"When Grandpa Logger was a teenager he worked for Ice Age looking for saber tooth tigers," according to neighborhood expert Cade Maguire.',
     },
     {
       text: 'Local expert Cade Maguire provided additional context, explaining that Grandpa Logger’s teenage years were unusually busy. In addition to tiger patrol, he reportedly balanced part‑time work cleaning his logging bed, avoiding suspicious shoes, and assisting his secret‑agent parents with undisclosed missions. Scholars believe this eclectic upbringing contributed to his later interests, including corn ice cream, sour‑cream ice cream, and maintaining an elaborate network of basements.',

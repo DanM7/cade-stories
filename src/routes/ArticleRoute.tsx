@@ -1,6 +1,7 @@
 import type { Article } from '../models/types'
 import { getCurrentEditionLabel } from '../utils/edition'
 import { navigateTo } from '../utils/navigation'
+import { normalizeAttributedPullQuote } from '../utils/quotes'
 
 interface ArticleRouteProps {
   article?: Article
@@ -38,7 +39,9 @@ export function ArticleRoute({ article }: ArticleRouteProps) {
         {article.body.map((paragraph, index) => (
           <section key={`${article.id}-p-${index}`} className="article-paragraph-block">
             <p className="article-body">{paragraph.text}</p>
-            {paragraph.pullQuote && <blockquote>{paragraph.pullQuote}</blockquote>}
+            {paragraph.pullQuote && (
+              <blockquote>{normalizeAttributedPullQuote(paragraph.pullQuote)}</blockquote>
+            )}
           </section>
         ))}
 

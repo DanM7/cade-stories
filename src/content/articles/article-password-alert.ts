@@ -7,7 +7,7 @@ export const articlePasswordAlert: Article = {
   body: [
     {
       text: `The Cyber Safety Unit issued an urgent advisory this morning after discovering that the phrase “41 Muffin Lane” appears in multiple maple‑syrup‑encrypted vaults across the imagination network. Investigators say the password has been reused so frequently that it now qualifies as both a security risk and a cultural phenomenon. Analysts were particularly alarmed to find it written on sticky notes, carved into tree bark, and once whispered dramatically into a fan for voice‑distortion effect.`,
-      pullQuote: `"Know what GL's password is? 41 Muffin Lane.," said local Cade Maguire.`,
+      pullQuote: `"Know what GL's password is? 41 Muffin Lane," added junior fact-checker Cade Maguire.`,
     },
     {
       text: `Local expert Cade Maguire confirmed the password’s origin, explaining that it belongs to Grandpa Logger, whose digital hygiene has long been described as “chaotic neutral.” According to Cade, Grandpa Logger selected the password after a dream involving muffins, a mailbox, and a suspiciously friendly raccoon. Security officials note that while the password is technically complex enough to pass most strength tests, its widespread use among imaginary figures makes it extremely vulnerable to guesswork.`,
