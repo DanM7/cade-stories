@@ -1,4 +1,5 @@
 import type { Article } from '../models/types'
+import { formatArticleDocumentTitle, useDocumentTitle } from '../utils/documentTitle'
 import { getCurrentEditionLabel } from '../utils/edition'
 import { navigateTo } from '../utils/navigation'
 import { normalizeAttributedPullQuote } from '../utils/quotes'
@@ -9,6 +10,9 @@ interface ArticleRouteProps {
 
 export function ArticleRoute({ article }: ArticleRouteProps) {
   const editionLabel = getCurrentEditionLabel()
+  useDocumentTitle(
+    article ? formatArticleDocumentTitle(article.title) : formatArticleDocumentTitle('Article Not Found'),
+  )
 
   if (!article) {
     return (
