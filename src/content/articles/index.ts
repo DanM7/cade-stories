@@ -1,4 +1,5 @@
 import type { Article } from '../../models/types'
+import { article5thGradeGrad } from './article-5th-grade-grad'
 import { articleTenBasements } from './article-basements'
 import { articleBoomyStairs } from './article-boomy-stairs'
 import { articleHoneymoonDesk } from './article-honeymoon-desk'
@@ -12,6 +13,7 @@ import { articleTruckParliament } from './article-truck-parliament'
 import { articleUppercaseTooth } from './article-uppercase-tooth'
 
 export const STATIC_ARTICLES: Article[] = [
+  article5thGradeGrad,
   articleTenBasements,
   articleTruckParliament,
   articleBoomyStairs,
